@@ -1,0 +1,182 @@
+{
+  "handler": "Microsoft.Compute.MultiVm",
+  "version": "0.0.1-preview",
+  "parameters": {
+    "basics": [
+      {
+        "name": "Name",
+        "type": "Microsoft.Common.TextBox",
+        "label": "Virtual Machine name",
+        "toolTip": "The name of the Virtual Machine.",
+        "constraints": {
+          "required": true
+        }
+      },
+      {
+        "name": "adminUsername",
+        "type": "Microsoft.Compute.UserNameTextBox",
+        "label": "Username",
+        "toolTip": "Admin username for the virtual machines. The OpsCenter username is 'admin'.",
+        "osPlatform": "Linux"
+      },
+      {
+          "name": "SSHCredntials",
+          "type": "Microsoft.Compute.CredentialsCombo",
+          "label": {
+              "authenticationType": "Authentication type",
+              "password": "Password",
+              "confirmPassword": "Confirm password",
+              "sshPublicKey": "SSH public key"
+          },
+          "toolTip": {
+              "authenticationType": "Authentication Type for the Linux Virtual Machine",
+              "password": "Password for the Virtual Machine",
+              "sshPublicKey": "SSH Public Key for the Virtual Machine"
+          },
+          "constraints": {
+              "required": true
+          },
+          "options": {
+              "hideConfirmation": false
+          },
+          "osPlatform": "Linux"
+      }
+    ],
+    "steps": [
+      {
+        "name": "ciscoCSRConfig",
+        "label": "Cisco CSR settings",
+        "subLabel": {
+          "preValidation": "Configure the CSR settings",
+          "postValidation": "Done"
+        },
+        "bladeTitle": "Cisco CSR settings",
+        "elements": [
+          {
+            "name": "Size",
+            "type": "Microsoft.Compute.SizeSelector",
+            "label": "Virtual machine size",
+            "toolTip": "The size of virtual machine to provision.",
+            "recommendedSizes": [
+              "Standard_D2"
+            ],
+            "constraints": {
+              "allowedSizes": [
+                "Standard_D2"
+              ]
+            },
+            "osPlatform": "Linux",
+            "imageReference": {
+              "publisher": "cisco",
+              "offer": "cisco-csr-1000v",
+              "sku": "csr-azure-byol"
+            },
+            "count": "1"
+          },
+          {
+            "name": "storageAccount",
+            "type": "Microsoft.Storage.StorageAccountSelector",
+            "label": "Storage account",
+            "toolTip": "Storage Account for the Virtual Machine's Disks",
+            "defaultValue": {
+              "type": "Standard_LRS"
+            },
+            "constraints": {
+              "allowedTypes": [
+                "Standard_LRS"
+              ]
+            }
+          },
+          {
+            "name": "publicIpAddress",
+            "type": "Microsoft.Network.PublicIpAddressCombo",
+            "label": {
+              "publicIpAddress": "Public IP address",
+              "domainNameLabel": "DNS label"
+            },
+            "toolTip": {
+              "domainNameLabel": "DNS label for the Virtual Machine's public IP address."
+            },
+            "defaultValue": {
+              "publicIpAddressName": "ip01"
+            },
+            "options": {
+              "hideNone": true
+            }
+          },
+          {
+            "name": "virtualNetwork",
+            "type": "Microsoft.Network.VirtualNetworkCombo",
+            "label": {
+                "virtualNetwork": "Virtual network",
+                "subnets": "Subnets"
+            },
+            "toolTip": {
+                "virtualNetwork": "Virtual Network Name",
+                "subnets": "Subnets requied for the Cisco CSR solution"
+            },
+            "defaultValue": {
+                "name": "vnet01",
+                "addressPrefixSize": "/16"
+            },
+            "constraints": {
+                "minAddressPrefixSize": "/16"
+            },
+            "subnets": {
+                "subnet1": {
+                    "label": "First subnet",
+                    "defaultValue": {
+                        "name": "Subnet-1",
+                        "addressPrefixSize": "/24"
+                    },
+                    "constraints": {
+                        "minAddressPrefixSize": "/24",
+                        "minAddressCount": 12,
+                        "requireContiguousAddresses": false
+                    }
+                },
+                "subnet2": {
+                    "label": "Second subnet",
+                    "defaultValue": {
+                        "name": "Subnet-2",
+                        "addressPrefixSize": "/24"
+                    },
+                    "constraints": {
+                        "minAddressPrefixSize": "/24",
+                        "minAddressCount": 12,
+                        "requireContiguousAddresses": false
+                    }
+                }
+            }
+        }
+        ]
+      }
+    ],
+    "outputs": {
+      "vmName": "[basics('clusterName')]",
+      "adminUsername": "[basics('adminUsername')]",
+      "adminPassword": "[basics('password')]",
+      "sshPublicKey": "[basics('sshPublicKey')]",
+      "authenticationType" : "[basics('authenticationType')]",
+      "vmSize": "[steps('ciscoCSRConfig').vmSize]",
+      "location": "[location()]",
+      "newStorageAccountName" : "[steps('ciscoCSRConfig').storageAccount.name]",
+      "storageAccountType" : "[steps('ciscoCSRConfig').storageAccount.type]",
+      "storageAccountNewOrExisting" : "[steps('ciscoCSRConfig').storageAccount.newOrExisting]",
+      "storageAccountExistingRG" : "[steps('ciscoCSRConfig').storageAccount.resourceGroup]",
+      "publicIPAddressName" : "[steps('ciscoCSRConfig').publicIpAddress.name]",
+      "publicIPDnsName" : "[steps('ciscoCSRConfig').publicIpAddress.domainNameLabel]",
+      "publicIPNewOrExisting" : "[steps('ciscoCSRConfig').publicIpAddress.newOrExistingOrNone]",
+      "publicIPExistingRGName" : "[steps('ciscoCSRConfig').publicIpAddress.resourceGroup]",
+      "virtualNetworkName" : "[steps('ciscoCSRConfig').virtualNetwork.name]",
+      "virtualNetworkAddressPrefix" : "[steps('ciscoCSRConfig').virtualNetwork.addressPrefix]",
+      "Subnet1Name" : "[steps('ciscoCSRConfig').virtualNetwork.subnets.subnet1.name]",
+      "Subnet1Prefix" : "[steps('ciscoCSRConfig').virtualNetwork.subnets.subnet1.addressPrefix]",
+      "Subnet2Name" : "[steps('ciscoCSRConfig').virtualNetwork.subnets.subnet2.name]",
+      "Subnet2Prefix" : "[steps('ciscoCSRConfig').virtualNetwork.subnets.subnet2.addressPrefix]",
+      "vnetNewOrExisting" : "[steps('ciscoCSRConfig').virtualNetwork.newOrExisting]",
+      "virtualNetworkExistingRGName" : "[steps('ciscoCSRConfig').virtualNetwork.resourceGroup]",
+      "subnet2StartAddress" : "[steps('ciscoCSRConfig').virtualNetwork.subnets.subnet2.startAddress]"
+    }
+  }
+}
