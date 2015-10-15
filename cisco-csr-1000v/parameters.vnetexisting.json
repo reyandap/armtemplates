@@ -1,0 +1,68 @@
+{
+    "location": {
+        "value": "eastasia"
+    },
+    "virtualNetworkName": {
+        "value": "myvnet"
+    },
+    "virtualNetworkExistingRGName": {
+        "value": "reshm2"
+    },
+    "virtualNetworkAddressPrefix": {
+        "value": "10.2.0.0/16"
+    },
+    "Subnet1Prefix": {
+        "value": "10.2.0.0/24"
+    },
+    "Subnet1Name": {
+        "value": "default"
+    },
+    "Subnet2Prefix": {
+        "value": "10.2.1.0/24"
+    },
+    "Subnet2Name": {
+        "value": "subnet2"
+    },
+    "vnetNewOrExisting" : {
+        "value" : "existing"
+    },
+    "subnet1StartAddress" : {
+        "value" : "10.2.0.4"
+    },
+    "authenticationType" : {
+        "value" : "password"
+    },
+    "adminUsername": {
+        "value": "cloudguy"
+    },
+    "adminPassword": {
+      "value" : "abc_123!"
+    },
+    "vmName": {
+        "value": "myvm"
+    },
+    "newStorageAccountName": {
+        "value": "reshm2"
+    },
+    "storageAccountType": {
+        "value": "Standard_LRS"
+    },
+    "storageAccountNewOrExisting": {
+        "value": "new"
+    },
+    "publicIPAddressName": {
+        "value": "myIP"
+    },
+    "publicIPDnsName": {
+        "value": "reshm2"
+    },
+    "publicIPNewOrExisting": {
+        "value": "new"
+    },
+    "vnetNewOrExisting" : {
+        "value" : "existing"
+    },
+    "baseUrl": {
+        "value": "https://raw.githubusercontent.com/reyandap/armtemplates/master/cisco-csr-1000v"
+    }
+}

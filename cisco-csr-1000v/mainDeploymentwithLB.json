@@ -185,6 +185,7 @@
         },
         "vmSize" : {
             "type" : "string",
+            "defaultValue" : "Standard_D2",
             "allowedValues" : [
                 "Standard_D2"
             ],
@@ -302,7 +303,7 @@
             "properties": {
                 "securityRules": [
                     {
-                        "name": "rdp_rule",
+                        "name": "SSH-Rule",
                         "properties": {
                             "description": "Allow SSH",
                             "protocol": "Tcp",
@@ -322,6 +323,9 @@
             "name": "SettingUpVirtualNetwork",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2015-01-01",
+            "dependsOn" : [
+                "[concat('Microsoft.Network/routeTables/', parameters('vmName'),'-CSR-RouteTable'))]"
+            ],
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
@@ -352,6 +356,9 @@
                     },
                     "vnetExistingRGName": {
                         "value": "[parameters('virtualNetworkExistingRGName')]"
+                    },
+                    "routeTableName" :{
+                      "value" : "[concat(parameters('vmName'),'-CSR-RouteTable')]"
                     }
                 }
             }
@@ -361,9 +368,6 @@
             "name": "[concat(parameters('vmName'),'-CSR-RouteTable')]",
             "apiVersion": "[variables('apiVer')]",
             "location": "[parameters('location')]",
-            "dependsOn" : [
-                "[concat('Microsoft.Resources/deployments/', 'SettingUpVirtualNetwork')]"
-            ],
             "properties": {
                 "routes": [
                   {
