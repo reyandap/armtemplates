@@ -212,6 +212,7 @@
         "virtualNetworkSetupURL": "[concat(parameters('baseUrl'),'/vnet-',parameters('vnetNewOrExisting'),'.json')]",
         "lbID": "[resourceId('Microsoft.Network/loadBalancers',variables('loadBalancerName'))]",
         "frontEndIPConfigID": "[concat(variables('lbID'),'/frontendIPConfigurations/LoadBalancerFrontEnd')]",
+
         "osProfile": "[variables(concat('osprofile',parameters('authenticationType')))]",
         "osProfilesshPublicKey": {
             "computername": "[parameters('vmName')]",
@@ -301,7 +302,7 @@
             "properties": {
                 "securityRules": [
                     {
-                        "name": "ssh_rule",
+                        "name": "rdp_rule",
                         "properties": {
                             "description": "Allow SSH",
                             "protocol": "Tcp",
