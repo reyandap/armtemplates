@@ -436,7 +436,7 @@
             "location": "[parameters('location')]",
             "dependsOn": [
                 "[concat('Microsoft.Resources/deployments/', 'SettingUpVirtualNetwork')]",
-                "[concat('Microsoft.Network/networkSecurityGroups/',concat(parameters('vmName'),'-SSH-SecurityGroup'))]",
+                "[concat('Microsoft.Network/networkSecurityGroups/',variables('nsgname'))]",
                 "[concat('Microsoft.Network/loadBalancers/',variables('loadBalancerName'))]"
             ],
             "properties": {
@@ -453,13 +453,13 @@
                             {
                               "id": "[concat(variables('lbID'),'/inboundNatRules/SSH-Rule0')]"
                             }
-                            ],
-                            "networkSecurityGroup": {
-                                "id": "[resourceId('Microsoft.Network/networkSecurityGroups', variables('nsgname'))]"
-                            }
+                            ]
                         }
                     }
                 ],
+                "networkSecurityGroup": {
+                    "id": "[resourceId('Microsoft.Network/networkSecurityGroups', variables('nsgname'))]"
+                },
                 "enableIPForwarding": true
             }
         },
