@@ -24,7 +24,7 @@
       "type": "string"
     },
     "vnetExistingRGName" : {
-      "type" : "string",
+      "type" : "string"
     }
   },
   "variables": {
@@ -32,7 +32,20 @@
     "subnet1" : "[concat(variables('vnetID'),'/subnets/',parameters('Subnet1Name'))]",
     "subnet2" : "[concat(variables('vnetID'),'/subnets/',parameters('Subnet2Name'))]"
   },
-  "resources": [],
+  "resources": [
+    {
+        "apiVersion": "2015-06-15",
+        "type": "Microsoft.Network/virtualNetworks/subnets",
+        "name": "[concat(parameters('virtualNetworkName'),'/',parameters('Subnet2Name'))]",
+        "location": "[parameters('location')]",
+        "properties": {
+          "addressPrefix": "[reference(variables('subnet2'),providers('Microsoft.Network', 'virtualNetworks').apiVersions[0]).addressPrefix]",
+          "routeTable": {
+            "id": "[variables('routeTableId')]"
+          }
+        }
+    }
+  ],
   "outputs": {
     "subnet1Ref": {
       "value": "[variables('subnet1')]",

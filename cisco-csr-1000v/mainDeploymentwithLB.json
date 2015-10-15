@@ -365,14 +365,24 @@
                 "[concat('Microsoft.Resources/deployments/', 'SettingUpVirtualNetwork')]"
             ],
             "properties": {
-                "routes": [{
-                    "name": "VirtualApplianceRouteToCSRVM",
+                "routes": [
+                  {
+                    "name": "Route-Subnet1-To-CSR",
                     "properties": {
-                        "addressPrefix": "[parameters('subnet2Prefix')]",
+                        "addressPrefix": "[parameters('Subnet1Prefix')]",
                         "nextHopType": "VirtualAppliance",
                         "nextHopIpAddress": "[parameters('subnet1StartAddress')]"
                     }
-                }]
+                },
+                {
+                  "name": "Default-Route-To-CSR",
+                  "properties": {
+                      "addressPrefix": "0.0.0.0/0",
+                      "nextHopType": "VirtualAppliance",
+                      "nextHopIpAddress": "[parameters('subnet1StartAddress')]"
+                  }
+                }
+              ]
             }
         },
         {
