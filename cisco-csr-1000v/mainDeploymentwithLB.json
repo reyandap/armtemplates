@@ -324,7 +324,7 @@
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2015-01-01",
             "dependsOn" : [
-                "[concat('Microsoft.Network/routeTables/', parameters('vmName'),'-CSR-RouteTable'))]"
+                "[concat('Microsoft.Network/routeTables/', parameters('vmName'),'-CSR-RouteTable')]"
             ],
             "properties": {
                 "mode": "Incremental",

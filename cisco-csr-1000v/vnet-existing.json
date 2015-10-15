@@ -43,7 +43,7 @@
         "name": "[concat(parameters('virtualNetworkName'),'/',parameters('Subnet2Name'))]",
         "location": "[parameters('location')]",
         "properties": {
-          "addressPrefix": "[reference(variables('subnet2'),providers('Microsoft.Network', 'virtualNetworks').apiVersions[0]).addressPrefix]",
+          "addressPrefix": "parameters('subnet2Prefix')",
           "routeTable": {
             "id": "[variables('routeTableId')]"
           }
