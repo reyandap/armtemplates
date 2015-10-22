@@ -27,7 +27,7 @@
         "value" : "existing"
     },
     "subnet1StartAddress" : {
-        "value" : "10.2.1.4"
+        "value" : "10.2.0.4"
     },
     "authenticationType" : {
         "value" : "password"
