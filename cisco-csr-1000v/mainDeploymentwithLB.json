@@ -444,8 +444,7 @@
                     {
                         "name": "ipconfig1",
                         "properties": {
-                            "privateIPAllocationMethod": "Static",
-                            "privateIPAddress" : "[parameters('subnet1StartAddress')]",
+                            "privateIPAllocationMethod": "Dynamic",
                             "subnet": {
                                 "id": "[reference('Microsoft.Resources/deployments/SettingUpVirtualNetwork','2015-01-01').outputs.subnet1Ref.value]"
                             },
@@ -476,7 +475,8 @@
                     {
                         "name": "ipconfig1",
                         "properties": {
-                            "privateIPAllocationMethod": "Dynamic",
+                            "privateIPAllocationMethod": "Static",
+                            "privateIPAddress" : "[parameters('subnet1StartAddress')]",
                             "subnet": {
                                 "id": "[reference('Microsoft.Resources/deployments/SettingUpVirtualNetwork','2015-01-01').outputs.subnet2Ref.value]"
                             }
