@@ -3,10 +3,10 @@
         "value": "eastasia"
     },
     "virtualNetworkName": {
-        "value": "myvnet"
+        "value": "reshmi400vnet"
     },
     "virtualNetworkExistingRGName": {
-        "value": "reshm2"
+        "value": "reshmi400RG"
     },
     "virtualNetworkAddressPrefix": {
         "value": "10.2.0.0/16"
@@ -27,7 +27,7 @@
         "value" : "existing"
     },
     "subnet1StartAddress" : {
-        "value" : "10.2.0.4"
+        "value" : "10.2.1.4"
     },
     "authenticationType" : {
         "value" : "password"
@@ -39,10 +39,10 @@
       "value" : "abc_123!"
     },
     "vmName": {
-        "value": "myvm"
+        "value": "reshmi400csrvm"
     },
     "newStorageAccountName": {
-        "value": "reshminew1"
+        "value": "reshmi400store1"
     },
     "storageAccountType": {
         "value": "Standard_LRS"
@@ -51,10 +51,10 @@
         "value": "new"
     },
     "publicIPAddressName": {
-        "value": "myIP"
+        "value": "reshmi400ip"
     },
     "publicIPDnsName": {
-        "value": "reshm2"
+        "value": "reshmi400dns"
     },
     "publicIPNewOrExisting": {
         "value": "new"
