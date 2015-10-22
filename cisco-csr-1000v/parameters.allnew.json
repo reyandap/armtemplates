@@ -69,7 +69,7 @@
         "value": "https://raw.githubusercontent.com/reyandap/armtemplates/master/cisco-csr-1000v"
     },
     "subnet1startaddress" : {
-        "value" : "10.80.0.4"
+        "value" : "10.80.2.4"
     },
     "vmSize" : {
         "value" : "Standard_D2"
