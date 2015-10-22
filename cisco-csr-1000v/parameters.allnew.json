@@ -15,13 +15,13 @@
         "value": "10.1.1.0/24"
     },
     "Subnet1Name": {
-        "value": "Subnet-1"
+        "value": "default"
     },
     "Subnet2Prefix": {
         "value": "10.1.2.0/24"
     },
     "Subnet2Name": {
-        "value": "Subnet-2"
+        "value": "sn2"
     },
     "adminUsername": {
         "value": "cloudguy"

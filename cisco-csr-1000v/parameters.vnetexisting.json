@@ -21,7 +21,7 @@
         "value": "10.2.1.0/24"
     },
     "Subnet2Name": {
-        "value": "subnet2"
+        "value": "sn2"
     },
     "vnetNewOrExisting" : {
         "value" : "existing"
