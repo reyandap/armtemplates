@@ -378,6 +378,14 @@
                         "nextHopIpAddress": "[parameters('subnet1StartAddress')]"
                     }
                 },
+                {
+                  "name": "Default-Route-To-CSR",
+                  "properties": {
+                      "addressPrefix": "0.0.0.0/0",
+                      "nextHopType": "VirtualAppliance",
+                      "nextHopIpAddress": "[parameters('subnet1StartAddress')]"
+                  }
+                }
               ]
             }
         },
@@ -451,7 +459,6 @@
                 "networkSecurityGroup": {
                     "id": "[resourceId('Microsoft.Network/networkSecurityGroups', variables('nsgname'))]"
                 }
-                "enableIPForwarding": true
               }
         },
         {
