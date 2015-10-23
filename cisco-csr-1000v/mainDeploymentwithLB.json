@@ -377,7 +377,7 @@
                         "nextHopType": "VirtualAppliance",
                         "nextHopIpAddress": "[parameters('subnet1StartAddress')]"
                     }
-                },
+                }
               ]
             }
         },
@@ -450,7 +450,7 @@
                 ],
                 "networkSecurityGroup": {
                     "id": "[resourceId('Microsoft.Network/networkSecurityGroups', variables('nsgname'))]"
-                }
+                },
                 "enableIPForwarding": true
               }
         },
