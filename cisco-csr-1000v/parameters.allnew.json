@@ -3,22 +3,22 @@
         "value": "southeastasia"
     },
     "virtualNetworkName": {
-        "value": "reshmi800vnet"
+        "value": "reshmi700vnet"
     },
     "virtualNetworkExistingRGName": {
         "value": ""
     },
     "virtualNetworkAddressPrefix": {
-        "value": "10.80.0.0/16"
+        "value": "10.70.0.0/16"
     },
     "Subnet1Prefix": {
-        "value": "10.80.1.0/24"
+        "value": "10.70.1.0/24"
     },
     "Subnet1Name": {
         "value": "sn1"
     },
     "Subnet2Prefix": {
-        "value": "10.80.2.0/24"
+        "value": "10.70.2.0/24"
     },
     "Subnet2Name": {
         "value": "sn2"
@@ -39,7 +39,7 @@
         "value": "myvm"
     },
     "newStorageAccountName": {
-        "value": "ciscocsrstorage800"
+        "value": "ciscocsrstorage700"
     },
     "storageAccountType": {
         "value": "Standard_LRS"
@@ -51,10 +51,10 @@
         "value": ""
     },
     "publicIPAddressName": {
-        "value": "reshmi800ip"
+        "value": "reshmi700ip"
     },
     "publicIPDnsName": {
-        "value": "reshmi800dns"
+        "value": "reshmi700dns"
     },
     "publicIPNewOrExisting": {
         "value": "new"
@@ -69,7 +69,7 @@
         "value": "https://raw.githubusercontent.com/reyandap/armtemplates/master/cisco-csr-1000v"
     },
     "subnet1startaddress" : {
-        "value" : "10.80.2.4"
+        "value" : "10.70.2.4"
     },
     "vmSize" : {
         "value" : "Standard_D2"
