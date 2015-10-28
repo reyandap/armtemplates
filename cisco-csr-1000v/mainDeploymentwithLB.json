@@ -181,7 +181,7 @@
                 "artifactsBaseUrl": "",
                 "description": "URL to acquire other templates"
             },
-            "defaultValue": "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/cisco-csr-1000v"
+            "defaultValue": "https://raw.githubusercontent.com/reyandap/armtemplates/master/cisco-csr-1000v"
         },
         "vmSize" : {
             "type" : "string",
