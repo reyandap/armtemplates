@@ -58,6 +58,9 @@
         "type": "Microsoft.Network/virtualNetworks/subnets",
         "name": "[concat(parameters('virtualNetworkName'),'/',parameters('Subnet2Name'))]",
         "location": "[parameters('location')]",
+        "dependsOn": [
+            "[concat('Microsoft.Network/virtualNetworks/',parameters('virtualNetworkName'),'/subnets/',parameters('Subnet1Name'))]"           
+        ],
         "properties": {
           "addressPrefix": "[parameters('subnet2Prefix')]",
           "routeTable": {
