@@ -373,10 +373,10 @@
                         "value": "[parameters('virtualNetworkExistingRGName')]"
                     },
                     "routeTable1Name" :{
-                      "value" : "concat(parameters('Subnet1Name'),'-CSR-RouteTable')]"
+                      "value" : "[concat(parameters('Subnet1Name'),'-CSR-RouteTable')]"
                     },
                     "routeTable2Name" :{
-                      "value" : "concat(parameters('Subnet2Name'),'-CSR-RouteTable')]"
+                      "value" : "[concat(parameters('Subnet2Name'),'-CSR-RouteTable')]"
                     }
                 }
             }
