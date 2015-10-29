@@ -50,6 +50,12 @@
                 "description": "Subnet 1 Name"
             }
         },
+        "subnet1StartAddress" : {
+            "type" : "string",
+            "metadata" : {
+                "description" : "Subnet 1 Starting IP Address"
+            }
+        },
         "Subnet2Prefix": {
             "type": "string",
             "defaultValue": "",
@@ -64,7 +70,7 @@
                 "description": "Subnet 2 Name"
             }
         },
-        "subnet1StartAddress" : {
+        "subnet2StartAddress" : {
             "type" : "string",
             "metadata" : {
                 "description" : "Subnet 1 Starting IP Address"
@@ -365,15 +371,36 @@
                     "vnetExistingRGName": {
                         "value": "[parameters('virtualNetworkExistingRGName')]"
                     },
-                    "routeTableName" :{
-                      "value" : "[concat(parameters('vmName'),'-CSR-RouteTable')]"
+                    "routeTable1Name" :{
+                      "value" : "concat(parameters('Subnet1Name'),'-CSR-RouteTable')]"
+                    },
+                    "routeTable2Name" :{
+                      "value" : "concat(parameters('Subnet2Name'),'-CSR-RouteTable')]"
                     }
                 }
             }
         },
         {
             "type": "Microsoft.Network/routeTables",
-            "name": "[concat(parameters('vmName'),'-CSR-RouteTable')]",
+            "name": "[concat(parameters('Subnet1Name'),'-CSR-RouteTable')]",
+            "apiVersion": "[variables('apiVer')]",
+            "location": "[parameters('location')]",
+            "properties": {
+                "routes": [
+                  {
+                    "name": "Route-Subnet2-To-CSR",
+                    "properties": {
+                        "addressPrefix": "[parameters('Subnet2Prefix')]",
+                        "nextHopType": "VirtualAppliance",
+                        "nextHopIpAddress": "[parameters('subnet1StartAddress')]"
+                    }
+                }
+              ]
+            }
+        },
+        {
+            "type": "Microsoft.Network/routeTables",
+            "name": "[concat(parameters('Subnet2Name'),'-CSR-RouteTable')]",
             "apiVersion": "[variables('apiVer')]",
             "location": "[parameters('location')]",
             "properties": {
@@ -383,7 +410,7 @@
                     "properties": {
                         "addressPrefix": "[parameters('Subnet1Prefix')]",
                         "nextHopType": "VirtualAppliance",
-                        "nextHopIpAddress": "[parameters('subnet1StartAddress')]"
+                        "nextHopIpAddress": "[parameters('subnet2StartAddress')]"
                     }
                 }
               ]
@@ -404,7 +431,8 @@
                     {
                         "name": "ipconfig1",
                         "properties": {
-                            "privateIPAllocationMethod": "Dynamic",
+                            "privateIPAllocationMethod": "Static",
+                            "privateIPAddress" : "[parameters('subnet1StartAddress')]",
                             "subnet": {
                                 "id": "[reference('Microsoft.Resources/deployments/SettingUpVirtualNetwork', '2015-01-01').outputs.subnet1Ref.value]"
                             },
@@ -434,7 +462,7 @@
                         "name": "ipconfig1",
                         "properties": {
                             "privateIPAllocationMethod": "Static",
-                            "privateIPAddress" : "[parameters('subnet1StartAddress')]",
+                            "privateIPAddress" : "[parameters('subnet2StartAddress')]",
                             "subnet": {
                                 "id": "[reference('Microsoft.Resources/deployments/SettingUpVirtualNetwork', '2015-01-01').outputs.subnet2Ref.value]"
                             }

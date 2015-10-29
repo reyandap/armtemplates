@@ -176,6 +176,7 @@
       "Subnet2Prefix" : "[steps('ciscoCSRConfig').virtualNetwork.subnets.subnet2.addressPrefix]",
       "vnetNewOrExisting" : "[steps('ciscoCSRConfig').virtualNetwork.newOrExisting]",
       "virtualNetworkExistingRGName" : "[steps('ciscoCSRConfig').virtualNetwork.resourceGroup]",
+      "subnet1StartAddress" : "[steps('ciscoCSRConfig').virtualNetwork.subnets.subnet1.startAddress]",
       "subnet2StartAddress" : "[steps('ciscoCSRConfig').virtualNetwork.subnets.subnet2.startAddress]"
     }
   }

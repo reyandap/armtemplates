@@ -26,7 +26,10 @@
     "vnetExistingRGName" : {
       "type" : "string"
     },
-    "routeTableName" : {
+    "routeTable1Name" : {
+      "type" : "string"
+    },
+    "routeTable2Name" : {
       "type" : "string"
     }
   },
@@ -34,9 +37,22 @@
     "vnetID" : "[resourceId(parameters('vnetExistingRGName'),'Microsoft.Network/virtualNetworks',parameters('virtualNetworkName'))]",
     "subnet1" : "[concat(variables('vnetID'),'/subnets/',parameters('Subnet1Name'))]",
     "subnet2" : "[concat(variables('vnetID'),'/subnets/',parameters('Subnet2Name'))]",
-    "routeTableId" : "[resourceId('Microsoft.Network/routeTables',parameters('routeTableName'))]"
+    "routeTable1Id" : "[resourceId('Microsoft.Network/routeTables',parameters('routeTable1Name'))]",
+    "routeTable2Id" : "[resourceId('Microsoft.Network/routeTables',parameters('routeTable2Name'))]"
   },
   "resources": [
+    {
+        "apiVersion": "2015-06-15",
+        "type": "Microsoft.Network/virtualNetworks/subnets",
+        "name": "[concat(parameters('virtualNetworkName'),'/',parameters('Subnet1Name'))]",
+        "location": "[parameters('location')]",
+        "properties": {
+          "addressPrefix": "[parameters('subnet1Prefix')]",
+          "routeTable": {
+            "id": "[variables('routeTable1Id')]"
+          }
+        }
+    },
     {
         "apiVersion": "2015-06-15",
         "type": "Microsoft.Network/virtualNetworks/subnets",
@@ -45,7 +61,7 @@
         "properties": {
           "addressPrefix": "[parameters('subnet2Prefix')]",
           "routeTable": {
-            "id": "[variables('routeTableId')]"
+            "id": "[variables('routeTableI2d')]"
           }
         }
     }
