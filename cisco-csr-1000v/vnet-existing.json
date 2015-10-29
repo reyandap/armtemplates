@@ -61,7 +61,7 @@
         "properties": {
           "addressPrefix": "[parameters('subnet2Prefix')]",
           "routeTable": {
-            "id": "[variables('routeTableI2d')]"
+            "id": "[variables('routeTable2Id')]"
           }
         }
     }
