@@ -187,7 +187,7 @@
                 "artifactsBaseUrl": "",
                 "description": "URL to acquire other templates"
             },
-            "defaultValue": ""
+            "defaultValue": "https://raw.githubusercontent.com/reyandap/armtemplates/master/cisco-csr-1000v"
         },
         "vmSize" : {
             "type" : "string",
