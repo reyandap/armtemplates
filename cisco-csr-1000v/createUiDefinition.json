@@ -20,7 +20,7 @@
         "osPlatform": "Linux"
       },
       {
-          "name": "SSHCredntials",
+          "name": "SSHCredentials",
           "type": "Microsoft.Compute.CredentialsCombo",
           "label": {
               "authenticationType": "Authentication type",
@@ -153,12 +153,12 @@
       }
     ],
     "outputs": {
-      "vmName": "[basics('clusterName')]",
+      "vmName": "[basics('Name')]",
       "adminUsername": "[basics('adminUsername')]",
-      "adminPassword": "[basics('password')]",
-      "sshPublicKey": "[basics('sshPublicKey')]",
-      "authenticationType" : "[basics('authenticationType')]",
-      "vmSize": "[steps('ciscoCSRConfig').vmSize]",
+      "adminPassword": "[basics('SSHCredentials').password]",
+      "sshPublicKey": "[basics('SSHCredentials').sshPublicKey]",
+      "authenticationType" : "[basics('SSHCredentials').authenticationType]",
+      "vmSize": "[steps('ciscoCSRConfig').Size]",
       "location": "[location()]",
       "newStorageAccountName" : "[steps('ciscoCSRConfig').storageAccount.name]",
       "storageAccountType" : "[steps('ciscoCSRConfig').storageAccount.type]",
