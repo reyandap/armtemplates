@@ -98,7 +98,7 @@
               "domainNameLabel": "DNS label for the Virtual Machine's public IP address."
             },
             "defaultValue": {
-              "publicIpAddressName": "ip01"
+              "publicIpAddressName": ""
             },
             "options": {
               "hideNone": true
