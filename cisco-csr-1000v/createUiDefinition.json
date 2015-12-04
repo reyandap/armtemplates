@@ -125,10 +125,6 @@
             "subnets": {
                 "subnet1": {
                     "label": "First subnet",
-                    "defaultValue": {
-                        "name": "Subnet-1",
-                        "addressPrefixSize": "/24"
-                    },
                     "constraints": {
                         "minAddressPrefixSize": "/24",
                         "minAddressCount": 12,
@@ -137,10 +133,6 @@
                 },
                 "subnet2": {
                     "label": "Second subnet",
-                    "defaultValue": {
-                        "name": "Subnet-2",
-                        "addressPrefixSize": "/24"
-                    },
                     "constraints": {
                         "minAddressPrefixSize": "/24",
                         "minAddressCount": 12,
