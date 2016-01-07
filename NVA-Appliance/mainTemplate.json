@@ -209,9 +209,9 @@
         }
     },
     "variables": {
-        "imagePublisher": "NVA",
-        "imageOffer": "NVA_myappliance-vm_v5-preview",
-        "imageSKU": "NVA_fw-vm",
+        "imagePublisher": "NVA_publisher",
+        "imageOffer": "NVA_offer",
+        "imageSKU": "NVA_sku",
         "OSDiskName": "[concat(parameters('vmName'),'-disk')]",
         "vmStorageAccountContainerName": "vhds",
         "vnetID": "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]",
@@ -523,9 +523,9 @@
             "name": "[parameters('vmName')]",
             "location": "[parameters('location')]",
             "plan": {
-                "name": "NVA_fw-vm",
-                "publisher": "NVA",
-                "product": "NVA_myappliance-vm_v5-preview"
+                "name": "NVA_name",
+                "publisher": "NVA_publisher",
+                "product": "NVA_product"
             },
             "dependsOn": [
                 "[concat('Microsoft.Resources/deployments/', 'SettingUpStorageAccount')]",

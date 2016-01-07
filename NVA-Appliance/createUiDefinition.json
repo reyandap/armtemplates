@@ -77,9 +77,9 @@
             },
             "osPlatform": "Linux",
             "imageReference": {
-              "publisher": "NVA",
-              "offer": "NVA_myappliance-vm_v5-preview",
-              "sku": "NVA_fw-vm"
+              "publisher": "NVA_publisher",
+              "offer": "NVA_offer",
+              "sku": "NVA_sku"
             },
             "count": "1"
           },
